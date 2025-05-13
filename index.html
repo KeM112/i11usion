@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>خدعة بصرية!</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: white;
+      font-family: sans-serif;
+    }
+
+    .illusion {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(45deg, red, blue);
+      animation: pulse 1s infinite;
+      border-radius: 20%;
+      display: none;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.5) rotate(45deg);
+      }
+    }
+
+    .secret-message {
+      margin-top: 20px;
+      font-size: 24px;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+
+    #startBtn {
+      padding: 10px 20px;
+      font-size: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: crimson;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <button id="startBtn">ابدأ</button>
+  <div class="illusion" id="illusionBox"></div>
+  <div class="secret-message" id="message">هل لاحظت ماذا يحدث؟</div>
+  <audio id="sfx" src="https://www.soundjay.com/buttons/sounds/beep-07.mp3"></audio>
+
+  <script>
+    document.getElementById('startBtn').onclick = function() {
+      document.getElementById('sfx').play();
+      document.getElementById('illusionBox').style.display = 'block';
+      this.style.display = 'none';
+      setTimeout(() => {
+        document.getElementById('message').style.opacity = 1;
+      }, 5000);
+    }
+  </script>
+</body>
+</html>
